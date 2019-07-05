@@ -16,8 +16,9 @@ import { TodosListComponent } from './todo/todos-list/todos-list.component';
 import { TodosItemComponent } from './todo/todos-item/todos-item.component';
 import { TodoFooterComponent } from './todo/todo-footer/todo-footer.component';
 import { TodoAddComponent } from './todo/todo-add/todo-add.component';
-import { todoReducer } from './todo/todo.reducer';
+
 import { environment } from 'src/environments/environment.prod';
+import { appReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { environment } from 'src/environments/environment.prod';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ todos: todoReducer }),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
