@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from '../app.reducer';
+import { Store } from '@ngrx/store';
+import { CambiarAllEstadoAction } from './todo.action';
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
+  completado: boolean = false;
+  constructor( private store: Store<AppState>) { }
 
   ngOnInit() {
+  }
+
+  cambiarEstadoTodos() {
+    this.completado = ! this.completado
+    const accion  = new CambiarAllEstadoAction(this.completado);
+    this.store.dispatch(accion);
   }
 
 }

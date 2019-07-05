@@ -28,7 +28,11 @@ export function todoReducer(state = estadoInicial, action: fromTodo.Acciones): T
                 }
             });
         case fromTodo.ELIMINAR_TODO:
-            return state.filter( todo => { return todo.id !== action.id});
+            return state.filter(todo => { return todo.id !== action.id });
+        case fromTodo.CAMBIAR_ALL_ESTADO:
+            return state.map(todoEdit => {
+                    return { ...todoEdit, completado: action.completado };
+            });
         default:
             return state;
     }
