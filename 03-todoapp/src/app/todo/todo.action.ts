@@ -4,6 +4,7 @@ export const CAMBIAR_ESTADO = "[TODO] CAMBIAR ESTADO";
 export const CAMBIAR_ALL_ESTADO = "[TODO] CAMBIAR ALL ESTADO";
 export const EDITAR_TODO = "[TODO] EDITAR TODO";
 export const ELIMINAR_TODO = "[TODO] ELIMINAR TODO";
+export const ELIMINAR_TODOS_COMPLETADOS = "[TODO] ELIMINAR TODOS ELIMINADOS"
 
 export class AgregarTodoAction implements Action {
     readonly type = AGREGAR_TODO;
@@ -30,8 +31,12 @@ export class EliminarTodoAction implements Action {
     constructor(public id: number) { }
 }
 
+export class EliminarTodosCompletadosAction implements Action {
+    readonly type = ELIMINAR_TODOS_COMPLETADOS;
+    constructor() {}
+}
 
 
 
 export type Acciones = AgregarTodoAction | CambiarEstadoAction
-    | EditarTodoAction | EliminarTodoAction | CambiarAllEstadoAction;
+    | EditarTodoAction | EliminarTodoAction | CambiarAllEstadoAction | EliminarTodosCompletadosAction;
